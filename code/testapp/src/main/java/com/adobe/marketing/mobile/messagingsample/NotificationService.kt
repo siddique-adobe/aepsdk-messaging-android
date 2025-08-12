@@ -38,7 +38,7 @@ class NotificationService : FirebaseMessagingService() {
         super.onMessageReceived(message)
 
         // region BEGIN - automatic display and tracking
-        //   MessagingService.handleRemoteMessage(this, message)
+           MessagingService.handleRemoteMessage(this, message)
         // endregion
 
         // region BEGIN - manual display and tracking

@@ -20,12 +20,19 @@ import com.adobe.marketing.mobile.LoggingMode
 import com.adobe.marketing.mobile.Lifecycle
 import com.adobe.marketing.mobile.edge.identity.Identity
 import com.google.firebase.messaging.FirebaseMessaging
+import android.util.Log
+import android.app.NotificationManager
+import android.content.Context
+import android.os.Build
+import com.adobe.marketing.mobile.edge.identity.AuthenticatedState
+import com.adobe.marketing.mobile.edge.identity.IdentityItem
+import com.adobe.marketing.mobile.edge.identity.IdentityMap
 
 class MessagingApplication : Application() {
-    private val ENVIRONMENT_FILE_ID = "3149c49c3910/4f6b2fbf2986/launch-7d78a5fd1de3-development"
-    private val ASSURANCE_SESSION_ID = ""
+    private val ENVIRONMENT_FILE_ID = "3149c49c3910/473386a6e5b0/launch-6099493a8c97-development"
+    private val ASSURANCE_SESSION_ID = "saquib://?adb_validation_sessionid=6ac9c51c-6a95-4e70-ad76-9f747615da12"
     private val STAGING_APP_ID = "staging/1b50a869c4a2/bcd1a623883f/launch-e44d085fc760-development"
-    private val STAGING = true
+    private val STAGING = false
 
     override fun onCreate() {
         super.onCreate()
@@ -44,7 +51,7 @@ class MessagingApplication : Application() {
             }
             MobileCore.lifecycleStart(null)
         }
-        // Assurance.startSession(ASSURANCE_SESSION_ID)
+         Assurance.startSession(ASSURANCE_SESSION_ID)
 
         FirebaseMessaging.getInstance().token.addOnCompleteListener { task ->
             // Log and toast
@@ -52,9 +59,24 @@ class MessagingApplication : Application() {
                 // Get new FCM registration token
                 val token = task.result
                 print("MessagingApplication Firebase token :: $token")
+                Log.d("MessagingApplication", "FCM token retrieved successfully: $token")
                 // Syncing the push token with experience platform
                 MobileCore.setPushIdentifier(token)
+            } else {
+                // Handle error case
+                val exception = task.exception
+                Log.e("MessagingApplication", "Failed to retrieve FCM token", exception)
+                print("MessagingApplication Failed to get Firebase token: ${exception?.message}")
             }
         }
+        updateIdentities()
+    }
+
+    fun updateIdentities() {
+        val identityMap = IdentityMap()
+        val emailIdentity =
+            IdentityItem("test.messagingapp@adobe.com", AuthenticatedState.AUTHENTICATED, true)
+        identityMap.addItem(emailIdentity, "Email")
+        Identity.updateIdentities(identityMap)
     }
 }
