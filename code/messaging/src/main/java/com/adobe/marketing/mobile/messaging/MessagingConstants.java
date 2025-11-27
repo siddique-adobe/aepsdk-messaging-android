@@ -143,6 +143,18 @@ public final class MessagingConstants {
         static final String LAUNCHES_VALUE = "value";
         static final String DATASET_ID = "datasetId";
         static final String COLLECT = "collect";
+        static final String DECISIONING = "decisioning";
+        static final String EXD_REQUEST_ID = "exdRequestID";
+        static final String PROPOSITIONS = "propositions";
+        static final String SCOPE_DETAILS = "scopeDetails";
+        static final String PLACEMENT = "placement";
+        static final String DECISION_PROVIDER = "decisionProvider";
+        static final String ITEMS = "items";
+        static final String ITEM_SELECTION = "itemSelection";
+        static final String RANKING_DETAIL = "rankingDetail";
+        static final String STRATEGY_ID = "strategyID";
+        static final String STEP = "step";
+        static final String TREATMENT_ID = "treatmentID";
 
         private TrackingKeys() {}
     }

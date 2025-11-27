@@ -27,7 +27,7 @@ android {
       namespace = "com.adobe.marketing.mobile.messagingsample"
 
     defaultConfig {
-        applicationId = "com.adobe.marketing.mobile.messagingsample"
+        applicationId = "com.adobe.marketing.mobile.messagingmssiddique"
         compileSdk = BuildConstants.Versions.COMPILE_SDK_VERSION
         minSdk = BuildConstants.Versions.MIN_SDK_VERSION
         targetSdk = BuildConstants.Versions.TARGET_SDK_VERSION

@@ -21,10 +21,6 @@ import com.adobe.marketing.mobile.Lifecycle
 import com.adobe.marketing.mobile.edge.identity.Identity
 
 class MessagingApplication : Application() {
-    private val ENVIRONMENT_FILE_ID = "3149c49c3910/4f6b2fbf2986/launch-7d78a5fd1de3-development"
-    private val ASSURANCE_SESSION_ID = ""
-    private val STAGING_APP_ID = "staging/1b50a869c4a2/bcd1a623883f/launch-e44d085fc760-development"
-    private val STAGING = false
 
     override fun onCreate() {
         super.onCreate()
@@ -34,13 +30,8 @@ class MessagingApplication : Application() {
         val extensions = listOf(Messaging.EXTENSION, Identity.EXTENSION, Lifecycle.EXTENSION, Edge.EXTENSION, Assurance.EXTENSION)
         MobileCore.registerExtensions(extensions) {
             // Necessary property id which has the edge configuration id needed by aep sdk
-            if (STAGING) {
-                MobileCore.configureWithAppID(STAGING_APP_ID)
-                MobileCore.updateConfiguration(
-                    hashMapOf("edge.environment" to "int") as Map<String, Any>)
-            } else {
-                MobileCore.configureWithAppID(ENVIRONMENT_FILE_ID)
-            }
+            //MobileCore.configureWithAppID("staging/1b50a869c4a2/f3593b4ab236/launch-5d384d7e591f-development")
+            MobileCore.configureWithAppID("3149c49c3910/4f6b2fbf2986/launch-7d78a5fd1de3-development")
             MobileCore.lifecycleStart(null)
 
             val configMap = mapOf(
@@ -48,6 +39,7 @@ class MessagingApplication : Application() {
             )
             MobileCore.updateConfiguration(configMap)
         }
-        // Assurance.startSession(ASSURANCE_SESSION_ID)
+        //Assurance.startSession("hello://?adb_validation_sessionid=e5f73dd1-bce5-43e2-ac7e-2095d6a9784b&env=qa") 2815
+        Assurance.startSession("messaging://?adb_validation_sessionid=23ad3126-a273-4b27-9c6b-3672b3184035")
     }
 }

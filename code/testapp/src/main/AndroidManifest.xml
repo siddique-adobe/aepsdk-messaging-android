@@ -83,7 +83,7 @@
         </activity>
 
         <service
-            android:name=".NotificationService"
+            android:name="com.adobe.marketing.mobile.messaging.MessagingService"
             android:enabled="true"
             android:exported="false">
             <intent-filter>

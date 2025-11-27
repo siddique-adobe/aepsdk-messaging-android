@@ -1,36 +1,26 @@
 {
   "project_info": {
-    "project_number": "xxxxxxxxx",
-    "project_id": "xxxxxxxxx",
-    "storage_bucket": "xxxxxxxxx"
+    "project_number": "620535615823",
+    "project_id": "messagingmssiddique",
+    "storage_bucket": "messagingmssiddique.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "xxxxxxxxx",
+        "mobilesdk_app_id": "1:620535615823:android:e3e4eea19f2a6bca8db53a",
         "android_client_info": {
-          "package_name": "com.adobe.marketing.mobile.messagingsample"
+          "package_name": "com.adobe.marketing.mobile.messagingmssiddique"
         }
       },
-      "oauth_client": [
-        {
-          "client_id": "xxxxxxxxx",
-          "client_type": 3
-        }
-      ],
+      "oauth_client": [],
       "api_key": [
         {
-          "current_key": "xxxxxxxxx"
+          "current_key": "AIzaSyBs8W-MEW7m8fpmz_lsGaQi5vUIZU9geQ4"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "xxxxxxxxx",
-              "client_type": 3
-            }
-          ]
+          "other_platform_oauth_client": []
         }
       }
     }
